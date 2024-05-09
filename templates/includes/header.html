@@ -1,0 +1,35 @@
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="{% url 'menu:index' %}" class="logo">
+            {% load static %}
+            <img src="{% static 'assets/images/klassy-logo.png' %}" align="klassy cafe html template" alt="logo">
+          </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Menu Start ***** -->
+          <ul class="nav">
+            <li><a href="{% url 'menu:index' %}">Home</a></li>
+            <li><a href="{% url 'menu:about' %}">About</a></li>
+            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'menu:dish-list' %}">Menu</a></li>
+              <li><a href="{% url 'menu:cooks-list' %}">Chefs</a></li>
+              <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+              <li> User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+              <li><a href="{% url 'menu:user-create' %}">create user</a></li>
+            {% endif %}
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

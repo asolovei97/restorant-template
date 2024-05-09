@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="section" id="cookDetail">
+    <div class="container">
+      <div class="cookTitle section-heading">
+        <h1>{{ object.full_name }}</h1>
+      </div>
+      <div class="cookPhoto">
+        <img src="{{ object.photo.url }}" alt="{{ object.full_name }}" style="width: 100%;">
+      </div>
+      <div class="row">
+        <div class="col-lg">
+          <div class="cookDetails">
+           <p>{{ object.biography }}</p>
+            <h3>Experience: {{ object.years_of_experience }} years</h3>
+          </div>
+        </div>
+        <div class="col-lg">
+          <h3><strong>Dishes:</strong></h3><br>
+            {% for dish in object.dishes.all %}
+              <a href="{% url 'menu:dish-detail' dish.pk %}" style="text-decoration: none;"><h5>{{ dish.name }}</h5></a><br>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

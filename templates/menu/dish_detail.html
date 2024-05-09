@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+ <section class="section" id="dishDetail">
+  <div class="container">
+    <div class="dishTitle section-heading">
+      <h2>{{ dish.name }}</h2>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg">
+        <div class="dishImage">
+          <img src="{{ dish.image.url }}" alt="{{ dish.name }}" style="width: 100%">
+          <div class="middleText">
+            <button class="btn btn-outline-success">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg">
+        <div class="dishDescription">
+          {{ dish.description }}
+        </div>
+        <br>
+        <div class="dishPrice row space-between">
+          <div class="col-sm">
+            <h3>Price: {{ dish.price }} $</h3>
+          </div>
+          <div class="col-sm">
+            <button class="btn btn-outline-success">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+
+
+{% endblock %}
